@@ -10,17 +10,14 @@ app.use(helmet()); // prevent hacker detect technologies that we are using to fi
 app.use(compression()); // helping we reduce memory that we used
 
 // init db
+require("./dbs/initMongo");
+const { checkOverload } = require("./helpers/checkConnect");
+checkOverload();
 
 // init router
 
 // handle error
 
-app.get("/", (req, res) => {
-  const strCompress = "Hello";
-  return res.status(200).json({
-    msg: "Hello",
-    metadata: strCompress.repeat(10000),
-  });
-});
-
 module.exports = app;
+
+// untils tần xuất sử dụng nhiều helpers khi cần mới sử dụng

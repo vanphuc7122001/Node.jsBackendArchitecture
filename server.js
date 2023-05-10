@@ -1,6 +1,9 @@
 const app = require("./src/app");
 require("dotenv").config();
-const port = process.env.PORT || 3000;
+
+const {
+  app: { port },
+} = require("./src/configs/configMongodb");
 
 const server = app.listen(port, () => {
   console.log(`App listening on ${port}`);
